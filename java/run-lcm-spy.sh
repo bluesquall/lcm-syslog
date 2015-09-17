@@ -1,1 +1,2 @@
-CLASSPATH=/Users/squall/Repositories/mbari/lcm-syslog/java/process_management.jar lcm-spy
+#!/bin/bash
+CLASSPATH=`pwd`/process_management.jar lcm-spy
