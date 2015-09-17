@@ -1,0 +1,3 @@
+[submodule "process-management-lcmtypes"]
+	path = process-management-lcmtypes
+	url = git@bitbucket.org:mbari/process-management-lcmtypes.git
