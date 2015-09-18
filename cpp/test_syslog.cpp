@@ -9,7 +9,7 @@ int main(int argc, char ** argv)
 {
     process_management::process_t process;
     process.name = "test-syslog";
-    process.pid = getpid();
+    process.id = getpid();
     Syslog::Syslog log(process);
 
     for(int i = 0; i<10; i++)
