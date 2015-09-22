@@ -7,10 +7,10 @@ import lcm
 
 import process_management
 
-class Syslog:
+class LCMSyslog:
 
-    def __init__(self, process):
-        self.lio = lcm.LCM()
+    def __init__(self, process, lio=lcm.LCM()):
+        self.lio = lio
         self.msg = process_management.syslog_t()
         self.msg.process = process
 
@@ -46,10 +46,10 @@ class Syslog:
 
 if __name__ == '__main__': # run a test
     process = process_management.process_t()
-    process.name = 'syslog.py'
+    process.name = 'lcm-syslog.py'
     process.id = os.getpid()
     print('PID: {0}'.format(process.id))
-    log = Syslog(process)
+    log = LCMSyslog(process)
     for i in range(10):
         log.critical('This is syslog entry {0} at the CRITICAL level.'.format(i))
         log.fault('This is syslog entry {0} at the FAULT level.'.format(i))
