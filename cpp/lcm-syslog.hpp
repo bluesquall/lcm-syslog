@@ -28,7 +28,8 @@ class LCMSyslog
                        CRITICAL  = 7,
         } Level;
 */
-        LCMSyslog( const process_management::process_t &process );
+        LCMSyslog(const process_management::process_t &process,
+                const std::string &provider);
         virtual ~LCMSyslog();
 
 //        void log(const std::string &text, const int64_t &epoch_usec=0, Level level=LCMSyslog::NONE);

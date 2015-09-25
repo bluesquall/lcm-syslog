@@ -3,7 +3,10 @@
 
 #include "lcm-syslog.hpp"
 
-LCMSyslog::LCMSyslog(const process_management::process_t &process){
+LCMSyslog::LCMSyslog(const process_management::process_t &process,
+        const std::string &provider) :
+    lcm(lcm::LCM(provider))
+{
     msg.process = process;
 }
 

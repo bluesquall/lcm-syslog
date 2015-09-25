@@ -1,18 +1,29 @@
 // test_syslog.cpp
 //
 
+#include <iostream>
 #include <unistd.h> // usleep
 
 #include "lcm-syslog.hpp"
 
-int main(int argc, char ** argv)
+int main(int argc, char  *argv[])
 {
     process_management::process_t process;
-    process.name = "test-syslog";
+    process.name = argv[0];
     process.id = getpid();
-    LCMSyslog::LCMSyslog log(process);
 
-    for(int i = 0; i<10; i++)
+    int n = argc > 1 ? std::atoi(argv[1]) : 10;
+    int p = argc > 2 ? std::atoi(argv[2]) : 1000000;
+    std::string provider = argc > 3 ? argv[3] : "";
+
+    std::cout << process.name
+        << " [" << process.id << "] "
+        << "publishing on LCM provider: " << provider
+        << std::endl;
+
+    LCMSyslog::LCMSyslog log(process, provider);
+
+    for(int i = 0; i<n; i++)
     {
         log.critical("This is a syslog entry at the CRITICAL level.");
         log.fault("This is a syslog entry at the FAULT level.");
@@ -21,6 +32,6 @@ int main(int argc, char ** argv)
         log.warning("This is a syslog entry at the WARNING level.");
         log.info("This is a syslog entry at the INFO level.");
         log.debug("This is a syslog entry at the DEBUG level.");
-        usleep(1000000);
+        usleep(p);
     }
 }
