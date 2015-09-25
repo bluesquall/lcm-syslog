@@ -3,14 +3,14 @@
 
 #include <unistd.h> // usleep
 
-#include "syslog.hpp"
+#include "lcm-syslog.hpp"
 
 int main(int argc, char ** argv)
 {
     process_management::process_t process;
     process.name = "test-syslog";
     process.id = getpid();
-    Syslog::Syslog log(process);
+    LCMSyslog::LCMSyslog log(process);
 
     for(int i = 0; i<10; i++)
     {

@@ -1,8 +1,8 @@
-// syslog.hpp
+// lcm-syslog.hpp
 //
 
-#ifndef SYSLOG_HPP
-#define SYSLOG_HPP
+#ifndef LCM_SYSLOG_HPP
+#define LCM_SYSLOG_HPP
 
 #include <string>
 
@@ -10,16 +10,28 @@
 
 #include <lcm/lcm-cpp.hpp>
 
-#include "util.hpp" // for eusec
+#include "util.hpp" // for epoch_usec
 #include "process_management/process_t.hpp"
 #include "process_management/syslog_t.hpp"
 
-class Syslog
+class LCMSyslog
 {
     public:
-        Syslog( const process_management::process_t &process );
-        virtual ~Syslog();
+/*
+        typedef enum { NONE      = 0,
+                       DEBUG     = 1,
+                       INFO      = 2,
+                       WARNING   = 3,
+                       IMPORTANT = 4,
+                       ERROR     = 5,
+                       FAULT     = 6,
+                       CRITICAL  = 7,
+        } Level;
+*/
+        LCMSyslog( const process_management::process_t &process );
+        virtual ~LCMSyslog();
 
+//        void log(const std::string &text, const int64_t &timestamp=0, Level level=LCMSyslog::NONE);
         void critical(const std::string &text, const int64_t &timestamp=0);
         void fault(const std::string &text, const int64_t &timestamp=0);
         void error(const std::string &text, const int64_t &timestamp=0);
@@ -33,4 +45,4 @@ class Syslog
         process_management::process_t process;
         process_management::syslog_t msg;
 };
-#endif // SYSLOG_HPP
+#endif // LCM_SYSLOG_HPP
