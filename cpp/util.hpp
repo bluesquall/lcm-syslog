@@ -8,22 +8,22 @@
 #include <ctime>
 
 /* convenience function for epoch seconds */
-inline int64_t epoch_sec(void){
+inline int64_t epoch_sec_now(void){
     return std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
 /* convenience function for epoch milliseconds */
-inline int64_t epoch_msec(void){
+inline int64_t epoch_msec_now(void){
     return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
 /* convenience function for epoch microseconds */
-inline int64_t epoch_usec(void){
+inline int64_t epoch_usec_now(void){
     return std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
 /* convenience function for epoch nanoseconds */
-inline int64_t epoch_nsec(void){
+inline int64_t epoch_nsec_now(void){
     return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 

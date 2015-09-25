@@ -31,14 +31,14 @@ class LCMSyslog
         LCMSyslog( const process_management::process_t &process );
         virtual ~LCMSyslog();
 
-//        void log(const std::string &text, const int64_t &timestamp=0, Level level=LCMSyslog::NONE);
-        void critical(const std::string &text, const int64_t &timestamp=0);
-        void fault(const std::string &text, const int64_t &timestamp=0);
-        void error(const std::string &text, const int64_t &timestamp=0);
-        void important(const std::string &text, const int64_t &timestamp=0);
-        void warning(const std::string &text, const int64_t &timestamp=0);
-        void info(const std::string &text, const int64_t &timestamp=0);
-        void debug(const std::string &text, const int64_t &timestamp=0);
+//        void log(const std::string &text, const int64_t &epoch_usec=0, Level level=LCMSyslog::NONE);
+        void critical(const std::string &text, const int64_t &epoch_usec=0);
+        void fault(const std::string &text, const int64_t &epoch_usec=0);
+        void error(const std::string &text, const int64_t &epoch_usec=0);
+        void important(const std::string &text, const int64_t &epoch_usec=0);
+        void warning(const std::string &text, const int64_t &epoch_usec=0);
+        void info(const std::string &text, const int64_t &epoch_usec=0);
+        void debug(const std::string &text, const int64_t &epoch_usec=0);
 
     private:
         lcm::LCM lcm;

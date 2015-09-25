@@ -20,7 +20,7 @@ class Handler
                 const std::string& channel,
                 const process_management::syslog_t* msg)
         {
-            std::cout << epoch_usec_to_iso8601(msg->timestamp)
+            std::cout << epoch_usec_to_iso8601(msg->epoch_usec)
                 << std::left << std::setw(13)
                 << " [" + channel.substr(channel.rfind('.') + 1) + "]"
                 << msg->text << std::endl;
