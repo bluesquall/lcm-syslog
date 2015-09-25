@@ -14,34 +14,34 @@ class LCMSyslog:
         self.msg = process_management.syslog_t()
         self.msg.process = process
 
-    def log(self, text, level='DEBUG', timestamp=None):
-        if timestamp is None:
-            self.msg.timestamp = int(time.time() * 1e6)
+    def log(self, text, level='DEBUG', epoch_usec=None):
+        if epoch_usec is None:
+            self.msg.epoch_usec = int(time.time() * 1e6)
         else:
-            self.msg.timestamp = timestamp
+            self.msg.epoch_usec = epoch_usec
         self.msg.text = text
         self.lio.publish('syslog.{0}'.format(level), self.msg.encode())
 
-    def critical(self, text, timestamp=None):
-        self.log(text, 'CRITICAL', timestamp)
+    def critical(self, text, epoch_usec=None):
+        self.log(text, 'CRITICAL', epoch_usec)
 
-    def fault(self, text, timestamp=None):
-        self.log(text, 'FAULT', timestamp)
+    def fault(self, text, epoch_usec=None):
+        self.log(text, 'FAULT', epoch_usec)
 
-    def error(self, text, timestamp=None):
-        self.log(text, 'ERROR', timestamp)
+    def error(self, text, epoch_usec=None):
+        self.log(text, 'ERROR', epoch_usec)
 
-    def important(self, text, timestamp=None):
-        self.log(text, 'IMPORTANT', timestamp)
+    def important(self, text, epoch_usec=None):
+        self.log(text, 'IMPORTANT', epoch_usec)
 
-    def warning(self, text, timestamp=None):
-        self.log(text, 'WARNING', timestamp)
+    def warning(self, text, epoch_usec=None):
+        self.log(text, 'WARNING', epoch_usec)
 
-    def info(self, text, timestamp=None):
-        self.log(text, 'INFO', timestamp)
+    def info(self, text, epoch_usec=None):
+        self.log(text, 'INFO', epoch_usec)
 
-    def debug(self, text, timestamp=None):
-        self.log(text, 'DEBUG', timestamp)
+    def debug(self, text, epoch_usec=None):
+        self.log(text, 'DEBUG', epoch_usec)
 
 
 if __name__ == '__main__': # run a test
