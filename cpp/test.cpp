@@ -3,17 +3,19 @@
 
 #include <iostream>
 #include <unistd.h> // usleep
+#include <stdlib.h> // strtol
 
 #include "lcm-syslog.hpp"
 
 int main(int argc, char  *argv[])
 {
+    char *eptr; // to check for conversion errors in strtol
     management::process_t process;
     process.name = argv[0];
     process.id = getpid();
 
-    int n = argc > 1 ? std::atoi(argv[1]) : 10;
-    int p = argc > 2 ? std::atoi(argv[2]) : 1000000;
+    long int n = argc > 1 ? strtol(argv[1], &eptr, 10) : 10;
+    long int p = argc > 2 ? strtol(argv[2], &eptr, 10) : 1000000;
     std::string provider = argc > 3 ? argv[3] : "";
 
     std::cout << process.name
@@ -23,7 +25,7 @@ int main(int argc, char  *argv[])
 
     LCMSyslog::LCMSyslog log(process, provider);
 
-    for(int i = 0; i<n; i++)
+    for(long int i = 0; i<n; i++)
     {
         log.critical("This is a syslog entry at the CRITICAL level.");
         log.fault("This is a syslog entry at the FAULT level.");
