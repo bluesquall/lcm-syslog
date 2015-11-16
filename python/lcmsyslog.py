@@ -3,7 +3,13 @@
 import os
 import time
 
-import lcm
+try:
+    import lcm
+except ImportError as e:
+    print('Could not import LCM')
+    print('If you are working in a venv, try cloning upstream and then:\n')
+    print('\tpip install -e ~/path/to/lcm/lcm-python\n')
+    raise e
 
 import process_management
 
