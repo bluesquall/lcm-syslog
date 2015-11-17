@@ -2,3 +2,4 @@
 */process_management
 __pycache__
 *.egg-info
+lcmtypes
