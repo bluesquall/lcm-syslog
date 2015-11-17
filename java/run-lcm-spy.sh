@@ -1,2 +1,7 @@
 #!/bin/bash
-CLASSPATH=`pwd`/process_management.jar lcm-spy
+JPATH=./lcmtypes
+rm $JPATH/*/*.java
+lcm-gen --java --jpath=$JPATH ../process-management-lcmtypes/*.lcm
+javac $JPATH/*/*.java
+CLASSPATH=$JPATH lcm-spy
+
