@@ -11,13 +11,13 @@ except ImportError as e:
     print('\tpip install -e ~/path/to/lcm/lcm-python\n')
     raise e
 
-import process_management
+import management
 
 class LCMSyslog:
 
     def __init__(self, process, lio=lcm.LCM()):
         self.lio = lio
-        self.msg = process_management.syslog_t()
+        self.msg = management.syslog_t()
         self.msg.process = process
 
     def log(self, text, level='DEBUG', epoch_usec=None):
@@ -51,7 +51,7 @@ class LCMSyslog:
 
 
 if __name__ == '__main__': # run a test
-    process = process_management.process_t()
+    process = management.process_t()
     process.name = 'lcm-syslog.py'
     process.id = os.getpid()
     print('PID: {0}'.format(process.id))

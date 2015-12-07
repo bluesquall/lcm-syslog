@@ -8,7 +8,7 @@
 
 #include "util.hpp"
 
-#include "process_management/syslog_t.hpp"
+#include "management/syslog_t.hpp"
 
 class LCMSyslogListener
 {
@@ -23,7 +23,7 @@ class LCMSyslogListener
 
         static void printSyslogMessage(const lcm::ReceiveBuffer* rbuf,
                 const std::string& channel,
-                const process_management::syslog_t* msg,
+                const management::syslog_t* msg,
                 LCMSyslogListener*)
         {
             std::cout << epoch_usec_to_iso8601(msg->epoch_usec)

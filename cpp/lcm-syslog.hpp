@@ -11,8 +11,8 @@
 #include <lcm/lcm-cpp.hpp>
 
 #include "util.hpp" // for epoch_usec
-#include "process_management/process_t.hpp"
-#include "process_management/syslog_t.hpp"
+#include "management/process_t.hpp"
+#include "management/syslog_t.hpp"
 
 class LCMSyslog
 {
@@ -28,7 +28,7 @@ class LCMSyslog
                        CRITICAL  = 7,
         } Level;
 */
-        LCMSyslog(const process_management::process_t &process,
+        LCMSyslog(const management::process_t &process,
                 const std::string &provider);
         virtual ~LCMSyslog();
 
@@ -43,7 +43,7 @@ class LCMSyslog
 
     private:
         lcm::LCM lcm;
-        process_management::process_t process;
-        process_management::syslog_t msg;
+        management::process_t process;
+        management::syslog_t msg;
 };
 #endif // LCM_SYSLOG_HPP

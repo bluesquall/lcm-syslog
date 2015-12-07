@@ -8,7 +8,7 @@
 
 int main(int argc, char  *argv[])
 {
-    process_management::process_t process;
+    management::process_t process;
     process.name = argv[0];
     process.id = getpid();
 
