@@ -1,3 +1,4 @@
+*.o
 *.jar
 */process_management
 __pycache__
